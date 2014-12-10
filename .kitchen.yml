@@ -36,6 +36,12 @@ suites:
         build_number: <%= ENV['BUILD_NUMBER'] %>
         uchiwa_revision: <%= ENV['UCHIWA_REVISION'] %>
   - name: test
+    excludes:
+      - ubuntu-14.10-i386
+      - ubuntu-14.04
+      - ubuntu-10.04
+      - ubuntu-12.04
+
     run_list:
       - recipe[uchiwa-build::test]
     attributes:
