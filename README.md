@@ -9,16 +9,27 @@ The packages are tested on the following platforms:
 - CentOS 5.11 x86_64
 - CentOS 6.5 x86_64
 - CentOS 6.5 i386
-- Ubuntu 10.04 amd64
-- Ubuntu 12.04 amd64
-- Ubuntu 14.04 amd64
-- Ubuntu 14.04 i386
+- Ubuntu 10.04 amd64 (currently disabled on this branch)
+- Ubuntu 12.04 amd64 (currently disabled on this branch)
+- Ubuntu 14.04 amd6  (currently disabled on this branch)
+- Ubuntu 14.04 i386  (currently disabled on this branch)
 
 ### Run
 
 ```
 export UCHIWA_VERSION=0.3.0
 export BUILD_NUMBER=1
+kitchen converge build
+kitchen destroy build
+kitchen test test
+```
+
+### Run from master uchiwa
+
+```
+export UCHIWA_VERSION=0.5.0-dev
+export BUILD_NUMBER=1
+export UCHIWA_REVISION=master
 kitchen converge build
 kitchen destroy build
 kitchen test test
