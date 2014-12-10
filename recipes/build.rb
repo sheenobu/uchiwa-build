@@ -66,7 +66,11 @@ end
 
 git uchiwa_src do
   repository 'https://github.com/sensu/uchiwa.git'
-  revision node['uchiwa-build']['uchiwa_version']
+  if node['uchiwa-build']['uchiwa_revision'] then
+    revision node['uchiwa-build']['uchiwa_revision']
+  else
+    revision node['uchiwa-build']['uchiwa_version']
+  end
 end
 
 execute 'install_bower' do
