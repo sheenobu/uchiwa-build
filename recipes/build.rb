@@ -32,6 +32,10 @@ execute 'extract_go' do
   command "tar -C /usr/local -xzf #{Chef::Config[:file_cache_path]}/go.tar.gz"
 end
 
+execute 'git_https' do
+  command "git config --global url.\"https://\".insteadOf git://"
+end
+
 execute 'cross_compile_go' do
   command './make.bash'
   environment ({ 'GOOS' => 'linux', 'GOARCH' => '386' })
