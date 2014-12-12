@@ -51,13 +51,12 @@ execute 'install_fpm' do
   command 'gem install fpm'
 end
 
-remote_file "#{Chef::Config[:file_cache_path]}/setup" do
-  source 'https://rpm.nodesource.com/setup'
+execute "install_epel" do
+  command "yum localinstall -y http://mirror.us.leaseweb.net/epel/6/i386/epel-release-6-8.noarch.rpm"
 end
 
-execute 'install_npm' do
-  command "bash - #{Chef::Config[:file_cache_path]}/setup && yum install -y nodejs"
-end
+package 'nodejs'
+package 'npm'
 
 execute 'cleanup' do
   command 'rm -rf assets/opt/uchiwa/src && rm -f go_backend.tar.gz && rm -rf assets/opt/uchiwa/bin/uchiwa'
